@@ -1,11 +1,11 @@
-import { PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import "./App.css";
 import { MyDocument } from "./components/MyDocument";
 function App() {
   return (
-    <PDFViewer>
-      <MyDocument />
-    </PDFViewer>
+    <PDFDownloadLink document={<MyDocument />} fileName="somename.pdf">
+      {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+    </PDFDownloadLink>
   );
 }
 
